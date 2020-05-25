@@ -47,7 +47,7 @@ public class DemoService implements ISmartCoreDeviceService {
                     Thread.sleep(12 * 1000);
 
                     Boolean currValue = (Boolean) this.device.getPropertyValue("power");
-                    this.device.setPropertyValue("power", !currValue, (i, v) -> true, this.notifyFunction);
+                    this.device.setPropertyValue("power", !currValue, (i, v) -> true, this.notifyFunction, false);
                 } catch (Exception ignored){}
             }
         }).start();
@@ -109,7 +109,7 @@ public class DemoService implements ISmartCoreDeviceService {
 
     @Override
     public Boolean setPropertyValue(String propertyId, Object propertyValue) {
-        return this.device.setPropertyValue(propertyId, propertyValue, (i, v) -> true, this.notifyFunction);
+        return this.device.setPropertyValue(propertyId, propertyValue, (i, v) -> true, this.notifyFunction, true);
     }
 
     @Override
